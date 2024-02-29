@@ -3,13 +3,11 @@
 #include <GLFW/glfw3.h>
 
 ParticleEmitter::ParticleEmitter(Shader shader, Texture2D texture, unsigned int amount)
-    : shader(shader), texture(texture), amount(amount)
-{
+    : shader(shader), texture(texture), amount(amount){
     this->Init();
 }
 
-void ParticleEmitter::Update(float dt, GameObject& object, unsigned int newParticles, glm::vec2 offset)
-{
+void ParticleEmitter::Update(float deltaTIme, GameObject& object, unsigned int newParticles, glm::vec2 offset){
     // Add new particles 
     for (unsigned int i = 0; i < newParticles; ++i)
     {
@@ -23,18 +21,17 @@ void ParticleEmitter::Update(float dt, GameObject& object, unsigned int newParti
         Particle& p = this->Particles[i];
 
         // Reduce lifetime
-        p.Lifetime -= dt; 
+        p.Lifetime -= deltaTIme; 
 
         // Particle is alive, update
         if (p.Lifetime > 0.0f){	
-            p.Position -= p.Velocity * dt;
-            p.Color.a -= dt * 2.5f;
+            p.Position -= p.Velocity * deltaTIme;
+            p.Color.a -= deltaTIme * 2.5f;
         }
     }
 }
 
-void ParticleEmitter::Draw()
-{
+void ParticleEmitter::Draw(){
     // Additive blending to give it a 'glow' effect
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     this->shader.Use();
@@ -54,8 +51,7 @@ void ParticleEmitter::Draw()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void ParticleEmitter::Init()
-{
+void ParticleEmitter::Init(){
     // Set up mesh and attribute properties
     unsigned int VBO;
     float particle_quad[] = {
@@ -87,8 +83,7 @@ void ParticleEmitter::Init()
 
 // Stores the index of the last particle used (for quick access to next dead particle)
 unsigned int lastUsedParticle = 0;
-unsigned int ParticleEmitter::FirstUnusedParticle()
-{
+unsigned int ParticleEmitter::FirstUnusedParticle(){
     // First search from last used particle, this will usually return almost instantly
     for (unsigned int i = lastUsedParticle; i < this->amount; ++i) {
         if (this->Particles[i].Lifetime <= 0.0f) {
@@ -112,8 +107,7 @@ unsigned int ParticleEmitter::FirstUnusedParticle()
     return 0;
 }
 
-void ParticleEmitter::RespawnParticle(Particle& particle, GameObject& object, glm::vec2 offset)
-{
+void ParticleEmitter::RespawnParticle(Particle& particle, GameObject& object, glm::vec2 offset){
     float random = ((rand() % 100) - 50) / 10.0f;
     float rColor = 0.5f + ((rand() % 100) / 100.0f);
     particle.Position = object.Position + random + offset;

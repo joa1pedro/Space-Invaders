@@ -17,7 +17,7 @@ public:
     ParticleEmitter(Shader shader, Texture2D texture, unsigned int amount);
     
     // Update all particles
-    void Update(float dt, GameObject& object, unsigned int newParticles, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
+    void Update(float deltaTime, GameObject& object, unsigned int newParticles, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
     
     // Render all particles
     void Draw();
