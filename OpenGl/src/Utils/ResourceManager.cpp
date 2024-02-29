@@ -8,7 +8,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-
 // Instantiate static variables
 std::unordered_map<std::string, Texture2D> ResourceManager::Textures;
 std::unordered_map<std::string, Shader> ResourceManager::Shaders;

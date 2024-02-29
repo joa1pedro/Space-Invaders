@@ -1,12 +1,13 @@
 #pragma once
 #include "GameObject.h"
 #include "texture.h"
+#include "BulletSystem.h"
 
 class Enemy : public GameObject {
 public:
-	Enemy(std::shared_ptr<BulletSystem> ps, GameObject go, Texture2D sprite2);
+	Enemy(std::shared_ptr<BulletSystem> bs, GameObject go, Texture2D sprite2);
 
-	std::shared_ptr<BulletSystem> particleSystem;
+	std::shared_ptr<BulletSystem> bulletSystem;
 	Texture2D SecondSprite;
 
 	void SetVelocity(float movementScale, float spriteSwapScale);

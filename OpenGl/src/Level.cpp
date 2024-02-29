@@ -1,4 +1,4 @@
-#include "GameLevel.h"
+#include "Level.h"
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -6,11 +6,11 @@
 
 const char* LEVEL_PATH = "res/levels/level.txt";
 
-Level::Level(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> particleSystem){
-    Load(file, levelWidth, levelHeight, particleSystem);
+Level::Level(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> bulletSystem){
+    Load(file, levelWidth, levelHeight, bulletSystem);
 }
 
-void Level::Load(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> particleSystem){
+void Level::Load(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> bulletSystem){
     // Clear old data
     this->EnemiesGOs.clear();
     this->Enemies.clear();
@@ -23,7 +23,7 @@ void Level::Load(const char* file, unsigned int levelWidth, unsigned int levelHe
             this->BricksGOs.push_back(go);
         }
         else {
-            Enemies.emplace_back( Enemy{ particleSystem, go,
+            Enemies.emplace_back( Enemy{ bulletSystem, go,
                 ResourceManager::GetTexture(
                     go.SpritePath.insert(go.SpritePath.find_last_of('.'), "2")
                 )});

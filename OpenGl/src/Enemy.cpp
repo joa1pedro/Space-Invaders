@@ -1,9 +1,9 @@
 #include "Enemy.h"
 #include <iostream>
 
-Enemy::Enemy(std::shared_ptr<BulletSystem> ps, GameObject go, Texture2D secondSprite)
+Enemy::Enemy(std::shared_ptr<BulletSystem> bs, GameObject go, Texture2D secondSprite)
 	: GameObject(go.Position, go.Size, go.Sprite, go.Color, go.Velocity),
-	  SecondSprite(secondSprite), FixedFPSPos(go.Position), particleSystem(ps)
+	  SecondSprite(secondSprite), FixedFPSPos(go.Position), bulletSystem(bs)
 { }
 
 bool Enemy::Move(float deltaTime, unsigned int window_width, unsigned int window_height){
@@ -78,7 +78,7 @@ void Enemy::SwapSprites() {
 void Enemy::Shoot() {
 	if (canShoot) {
 		glm::vec2 bulletP = { this->Position.x + this->Size.x / 2 , this->Position.y };
-		particleSystem->FireBullet(1,
+		bulletSystem->FireBullet(1,
 			bulletP, bulletVelocity, false);
 		canShoot = false;
 	}

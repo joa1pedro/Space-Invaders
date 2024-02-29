@@ -160,13 +160,14 @@
     <ClInclude Include="src\Utils\headers\GridLayoutHelper.h" />
     <ClInclude Include="src\headers\Player.h" />
     <ClInclude Include="src\headers\Enemy.h" />
-    <ClInclude Include="src\headers\GameLevel.h" />
+    <ClInclude Include="src\headers\Level.h" />
     <ClInclude Include="src\headers\GameObject.h" />
     <ClInclude Include="src\headers\shader.h" />
     <ClInclude Include="src\headers\Bullet.h" />
     <ClInclude Include="src\headers\SpaceInvaders.h" />
     <ClInclude Include="src\Utils\headers\SpriteRenderer.h" />
     <ClInclude Include="src\headers\texture.h" />
+    <ClInclude Include="src\Utils\headers\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fragment.shader" />

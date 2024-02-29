@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "stb_image.h"
+
 #define GLFW_INCLUDE_GLCOREARB
 
 SpriteRenderer::SpriteRenderer(const Shader& shader){

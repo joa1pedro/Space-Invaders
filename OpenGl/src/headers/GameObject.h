@@ -1,9 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <string>
-#include "texture.h"
 #include "SpriteRenderer.h"
-#include "BulletSystem.h"
 
 class Texture2D;
 // Container object for holding all state relevant for a single game object entity.

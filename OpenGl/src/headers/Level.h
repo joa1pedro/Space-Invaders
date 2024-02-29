@@ -6,6 +6,7 @@
 #include "ResourceManager.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "BulletSystem.h"
 
 class Level {
 public:
@@ -14,13 +15,13 @@ public:
     std::vector<GameObject> BricksGOs;
 
     Level() {};
-    Level(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> particleSystem);
+    Level(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> bulletSystem);
 
     //Update Function
     void Update(float deltaTime, unsigned int window_width, unsigned int window_height);
 
     // Loads level from file
-    void Load(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> particleSystem);
+    void Load(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> bulletSystem);
 
     float elapsedTime = 0.0f;
     // Render level

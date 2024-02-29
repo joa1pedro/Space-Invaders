@@ -1,13 +1,11 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
 
-#include "shader.h"
-#include "texture.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "ResourceManager.h"
 #include "SpaceInvaders.h"
 #include "GridLayoutHelper.h"

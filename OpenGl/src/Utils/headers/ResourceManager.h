@@ -1,9 +1,6 @@
 #pragma once
 
 #include <string>
-#include "texture.h"
-#include "shader.h"
-
 #include <map>
 #include <vector>
 #include <unordered_map>
