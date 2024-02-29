@@ -1,0 +1,495 @@
+[GameObject]Enemy01
+	[Position]60,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy02
+	[Position]110,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy03
+	[Position]160,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy04
+	[Position]210,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy05
+	[Position]260,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy06
+	[Position]310,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy07
+	[Position]360,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy08
+	[Position]410,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy09
+	[Position]460,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy10
+	[Position]510,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy11
+	[Position]560,40[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]green.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy12
+	[Position]60,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy13
+	[Position]110,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy14
+	[Position]160,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy15
+	[Position]210,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy16
+	[Position]260,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy17
+	[Position]310,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy18
+	[Position]360,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy19
+	[Position]410,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy20
+	[Position]460,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy21
+	[Position]510,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy22
+	[Position]560,80[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy23
+	[Position]60,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy24
+	[Position]110,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy25
+	[Position]160,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy26
+	[Position]210,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy27
+	[Position]260,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy28
+	[Position]310,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy29
+	[Position]360,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy30
+	[Position]410,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy31
+	[Position]460,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy32
+	[Position]510,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy33
+	[Position]560,120[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]yellow.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy34
+	[Position]60,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy35
+	[Position]110,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy36
+	[Position]160,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy37
+	[Position]210,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy38
+	[Position]260,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy39
+	[Position]310,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy40
+	[Position]360,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy41
+	[Position]410,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy42
+	[Position]460,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy43
+	[Position]510,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy44
+	[Position]560,160[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy45
+	[Position]60,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy46
+	[Position]110,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy47
+	[Position]160,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy48
+	[Position]210,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy49
+	[Position]260,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy50
+	[Position]310,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy51
+	[Position]360,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy52
+	[Position]410,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy53
+	[Position]460,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy54
+	[Position]510,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
+[GameObject]Enemy55
+	[Position]560,200[/Position]
+	[Size]24,20.5[/ Size]
+	[Velocity]10,0[/Velocity]
+	[Rotation]0.0[/Rotation]
+	[IsSolid]false[/IsSolid]
+	[Sprite]red.png[/Sprite]
+[/GameObject]
+
