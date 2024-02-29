@@ -10,6 +10,7 @@
 #include "SpaceInvaders.h"
 #include "GridLayoutHelper.h"
 
+
 #define GLFW_INCLUDE_GLCOREARB
 
 //Originally set to 800x600
