@@ -22,7 +22,7 @@ public:
     // Render all particles
     void Draw();
 private:
-    std::vector<Particle> Bullets;
+    std::vector<Particle> Particles;
     unsigned int amount;
 
     Shader shader;

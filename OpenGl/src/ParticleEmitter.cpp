@@ -14,13 +14,13 @@ void ParticleEmitter::Update(float dt, GameObject& object, unsigned int newParti
     for (unsigned int i = 0; i < newParticles; ++i)
     {
         int unusedParticle = this->FirstUnusedParticle();
-        this->RespawnParticle(this->Bullets[unusedParticle], object, offset);
+        this->RespawnParticle(this->Particles[unusedParticle], object, offset);
     }
 
     // Update all particles
     for (unsigned int i = 0; i < this->amount; ++i)
     {
-        Particle& p = this->Bullets[i];
+        Particle& p = this->Particles[i];
 
         // Reduce lifetime
         p.Lifetime -= dt; 
@@ -38,7 +38,7 @@ void ParticleEmitter::Draw()
     // Additive blending to give it a 'glow' effect
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     this->shader.Use();
-    for (const Particle &particle : this->Bullets)
+    for (const Particle &particle : this->Particles)
     {
         if (particle.Lifetime > 0.0f)
         {
@@ -82,7 +82,7 @@ void ParticleEmitter::Init()
 
     // Create this->amount default particle instances
     for (unsigned int i = 0; i < this->amount; ++i)
-        this->Bullets.push_back(Particle());
+        this->Particles.push_back(Particle());
 }
 
 // Stores the index of the last particle used (for quick access to next dead particle)
@@ -91,7 +91,7 @@ unsigned int ParticleEmitter::FirstUnusedParticle()
 {
     // First search from last used particle, this will usually return almost instantly
     for (unsigned int i = lastUsedParticle; i < this->amount; ++i) {
-        if (this->Bullets[i].Lifetime <= 0.0f) {
+        if (this->Particles[i].Lifetime <= 0.0f) {
             lastUsedParticle = i;
             return i;
         }
@@ -99,7 +99,7 @@ unsigned int ParticleEmitter::FirstUnusedParticle()
 
     // Otherwise, do a linear search
     for (unsigned int i = 0; i < lastUsedParticle; ++i) {
-        if (this->Bullets[i].Lifetime <= 0.0f) {
+        if (this->Particles[i].Lifetime <= 0.0f) {
             lastUsedParticle = i;
             return i;
         }
