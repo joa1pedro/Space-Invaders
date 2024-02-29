@@ -104,15 +104,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)src\headers;$(SolutionDir)src\Utils\headers;$(SolutionDir)Dependencies\Dependencies\freetype\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)src\headers;$(SolutionDir)src\Utils\headers;$(SolutionDir)Dependencies\freetype\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\GLFW\lib-vc2022;$(SolutionDir)\Dependencies\glew-2.1.0\lib\Release\x64;D:\Dev\SpaceInvaders\OpenGl\Dependencies\freetype\release static\vs2015-2022\win64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);glfw3.lib;Opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\freetype\rlstatic\vs2015-2022\win64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);glfw3.lib;Opengl32.lib;glew32s.lib;freetype.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)src\headers;$(SolutionDir)src\Utils\headers;$(SolutionDir)Dependencies\Dependencies\freetype\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)src\headers;$(SolutionDir)src\Utils\headers;$(SolutionDir)Dependencies\freetype\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -132,8 +132,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\GLFW\lib-vc2022;$(SolutionDir)\Dependencies\glew-2.1.0\lib\Release\x64;D:\Dev\SpaceInvaders\OpenGl\Dependencies\freetype\release static\vs2015-2022\win64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);glfw3.lib;Opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2022;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\freetype\rlstatic\vs2015-2022\win64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);glfw3.lib;Opengl32.lib;glew32s.lib;freetype.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -147,6 +147,7 @@
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\Utils\headers\TextRenderer.h" />
     <ClCompile Include="src\Utils\ResourceManager.cpp" />
     <ClCompile Include="src\Utils\headers\ResourceManager.h" />
     <ClCompile Include="src\shader.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="src\Utils\SpriteRenderer.cpp" />
     <ClCompile Include="src\Utils\stb_image.cpp" />
     <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="src\Utils\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\BulletSystem.h" />
@@ -172,6 +174,8 @@
   <ItemGroup>
     <None Include="res\shaders\fragment.shader" />
     <None Include="res\shaders\particleFragment.shader" />
+    <None Include="res\shaders\textFragment.shader" />
+    <None Include="res\shaders\textVertex.shader" />
     <None Include="res\shaders\vertex.shader" />
     <None Include="res\shaders\particleVertex.shader" />
   </ItemGroup>

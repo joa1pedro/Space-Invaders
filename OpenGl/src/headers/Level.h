@@ -14,7 +14,6 @@ public:
     std::vector<Enemy> Enemies;
     std::vector<GameObject> BricksGOs;
 
-    Level() {};
     Level(const char* file, unsigned int levelWidth, unsigned int levelHeight, std::shared_ptr<BulletSystem> bulletSystem);
 
     //Update Function
@@ -34,6 +33,8 @@ public:
 
     float timeBetweenBullets = 3.0f;
 
+    unsigned int Points;
+    unsigned int Lives = 3;
 private:
     // Scaling factor of the enemy movement when it reaches the corner
     float enemyMovementScaling = 0.10f;

@@ -4,6 +4,8 @@
 #include "BulletSystem.h"
 #include "ParticleEmitter.h"
 #include "Bullet.h"
+#include "TextRenderer.h"
+#include "sstream"
 #include <iostream>
 #include <memory>
 
@@ -11,12 +13,14 @@ std::shared_ptr<SpriteRenderer> Renderer;
 std::shared_ptr<BulletSystem> Bullets;
 std::shared_ptr<Player> player;
 std::shared_ptr<ParticleEmitter> Particles;
+std::shared_ptr<TextRenderer> Text;
 
 SpaceInvaders::SpaceInvaders(unsigned int width, unsigned int height)
-    : State(ACTIVE), Keys(), Width(width), Height(height) { }
+    : State(MENU), Keys(), Width(width), Height(height), Points(0) { }
 
 
-void SpaceInvaders::Init(){
+void SpaceInvaders::Init()
+{
 
     // Make the Particle Emitter
 	ResourceManager::LoadShader(
@@ -31,6 +35,10 @@ void SpaceInvaders::Init(){
 		500
 	);
 
+
+    // Load the fonts for the Text Renderer
+    Text = std::make_shared<TextRenderer>(this->Width, this->Height);
+    Text->Load("res/fonts/target.otf", 24);
 
     // Load Shaders
     ResourceManager::LoadShader(
@@ -62,22 +70,35 @@ void SpaceInvaders::Init(){
     player = std::make_shared<Player>(Bullets, ResourceManager::GetTexture("player.png"), playerPos, PLAYER_SIZE);
 }
 
-void SpaceInvaders::Update(float deltaTime){
-    // Update Particles
-    //Particles->Update(deltaTime, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+void SpaceInvaders::Update(float deltaTime)
+{
+    if (this->State == ACTIVE) {
+        // Update Particles
+        //Particles->Update(deltaTime, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
 
-    //Update Particle Bullets
-    Bullets->Update(deltaTime, this->Width, this->Height);
+        //Update Particle Bullets
+        Bullets->Update(deltaTime, this->Width, this->Height);
 
-    //Update objects in Level
-    this->Levels[this->CurrentLevel].Update(
-        deltaTime, this->Width, this->Height);
+        //Update objects in Level
+        this->Levels[this->CurrentLevel].Update(
+            deltaTime, this->Width, this->Height);
 
-    //Do Collisions
-    this->DoCollisions();
+        //Do Collisions
+        if (playerHit) {
+            spawnDelay += deltaTime;
+            if (spawnDelay >= 1.0f) {
+                playerHit = false;
+                spawnDelay = 0.0f;
+            }
+        }
+        else {
+            this->DoCollisions();
+        }
+    }
 }
 
-void SpaceInvaders::ProcessInput(float deltaTime){
+void SpaceInvaders::ProcessInput(float deltaTime)
+{
     if (this->State == ACTIVE)
     {
         float velocity = PLAYER_VELOCITY * deltaTime;
@@ -95,18 +116,56 @@ void SpaceInvaders::ProcessInput(float deltaTime){
         if (this->Keys[GLFW_KEY_SPACE])
             player->Shoot();
     }
+    if (this->State == MENU)
+    {
+        if (this->Keys[GLFW_KEY_ENTER])
+            this->State = ACTIVE;
+    }
 }
 
-void SpaceInvaders::Render(){
-    if (this->State == ACTIVE) {
-        //Draw Level
-        this->Levels[this->CurrentLevel].Draw(*Renderer);
+void SpaceInvaders::Render()
+{
+    if (this->State == WIN) {
+        Text->RenderText("You Win", 250, this->Height/2, 1.0f);
+    }
 
-        // Draw player
+    if (this->State == LOSE) {
+        Text->RenderText("You Lose", 250, this->Height/2, 1.0f);
+    }
+
+    if (this->State == MENU) {
+        Text->RenderText("Press ENTER to start", 250, this->Height/2, 1.0f);
+    }
+
+    if (this->State == ACTIVE) {
+        if (this->Lives == 0) {
+            this->State = LOSE;
+        }
+
+        //Draw Level
+        if (this->Levels[this->CurrentLevel].Enemies.empty()) {
+            this->State = WIN;
+        }
+        else {
+            this->Levels[this->CurrentLevel].Draw(*Renderer);
+        }
+
+        // Draw Player
         player->Draw(*Renderer);
-        // draw particles	
+        
+        // Draw Particles	
         Particles->Draw();
+
+        // Draw Bullets
         Bullets->Draw();
+
+        // Draw Texts
+        std::stringstream ss;
+        ss << this->Points;
+        Text->RenderText("Score:" + ss.str(), 10.0f, 30.0f, 1.0f);
+        ss.str("");
+        ss << this->Lives;
+        Text->RenderText("Lives:" + ss.str(), this->Width-150.0f, 30.0f, 1.0f);
     }
 }
 
@@ -124,13 +183,13 @@ bool CheckCollision(Bullet& one, Player& two) // AABB - AABB collision
 
 bool CheckCollision(Bullet& one, Enemy& two) // AABB - AABB collision
 {
-    // collision x-axis?
+    // X Axis Collision only
     bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
         two.Position.x + two.Size.x >= one.Position.x;
-    // collision y-axis?
+    // Y Axis Collision only
     bool collisionY = one.Position.y + one.Size.y >= two.Position.y &&
         two.Position.y + two.Size.y >= one.Position.y;
-    // collision only if on both axes
+    // 2 Axis Collision, real Collision
     return collisionX && collisionY;
 }
 
@@ -141,15 +200,17 @@ void SpaceInvaders::DoCollisions()
             if (!enemy.Destroyed && CheckCollision(*Bullets->PlayerBullets[0], enemy)) {
                 Bullets->PlayerBullets.pop_back();
                 player->canShoot = true;
-                enemy.Destroyed = true;
+                enemy.Destroyed = true; 
+                this->Points += 100;
                 break; // Exit the loop after destroying one enemy
             }
         }
-
-        for (Bullet* bullet : Bullets->EnemyBullets) {
-            if (CheckCollision(*bullet, *player)) {
-                std::cout << "Player Hit" << std::endl;
-            }
+    }
+    for (Bullet* bullet : Bullets->EnemyBullets) {
+        if (CheckCollision(*bullet, *player)) {
+            bullet->Destroyed = true;
+            playerHit = true;
+            this->Lives -= 1;
         }
     }
 }

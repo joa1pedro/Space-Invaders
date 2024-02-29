@@ -15,7 +15,8 @@ const float PLAYER_VELOCITY(300.0f);
 enum GameState {
     ACTIVE,
     MENU,
-    WIN
+    WIN,
+    LOSE
 };
 
 class SpaceInvaders
@@ -36,4 +37,9 @@ public:
     void Update(float deltaTime);
     void Render();
     void DoCollisions();
+
+    float spawnDelay = 0.0f;
+    bool playerHit = false;
+    unsigned int Points;
+    unsigned int Lives = 3;
 };

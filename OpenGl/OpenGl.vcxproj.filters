@@ -72,6 +72,12 @@
     <ClCompile Include="src\ParticleEmitter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utils\headers\TextRenderer.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\TextRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\shader.h">
@@ -120,6 +126,8 @@
     </None>
     <None Include="res\shaders\particleFragment.shader" />
     <None Include="res\shaders\particleVertex.shader" />
+    <None Include="res\shaders\textFragment.shader" />
+    <None Include="res\shaders\textVertex.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\green.png">

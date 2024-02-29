@@ -6,10 +6,10 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include "ResourceManager.h"
 #include "SpaceInvaders.h"
 #include "GridLayoutHelper.h"
-
 
 #define GLFW_INCLUDE_GLCOREARB
 
@@ -47,6 +47,7 @@ int main(void){
     glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     Game.Init();
 
@@ -54,6 +55,7 @@ int main(void){
     float lastFrame = 0.0f;
     bool bound = false;
     //Game Loop    
+
     while (!glfwWindowShouldClose(window))
     {
         float currentFrame = static_cast<float>(glfwGetTime());

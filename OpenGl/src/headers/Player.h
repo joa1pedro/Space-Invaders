@@ -16,7 +16,7 @@ public:
 	void Shoot();
 	bool canShoot = true;
 private:
-	glm::vec2 bulletVelocity = { 0.0f, -400.0f };
+	glm::vec2 bulletVelocity = { 0.0f, -800.0f };
 	Bullet* currentBullet = nullptr;
 	int currentBulletType = 1;
 };
