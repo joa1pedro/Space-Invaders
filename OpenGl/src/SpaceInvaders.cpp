@@ -8,12 +8,16 @@
 #include "sstream"
 #include <iostream>
 #include <memory>
+#include <irrKlang.h>
 
 std::shared_ptr<SpriteRenderer> Renderer;
 std::shared_ptr<BulletSystem> Bullets;
 std::shared_ptr<Player> player;
 std::shared_ptr<ParticleEmitter> Particles;
 std::shared_ptr<TextRenderer> Text;
+ISoundEngine* SoundEngine = createIrrKlangDevice();
+
+using namespace irrklang;
 
 SpaceInvaders::SpaceInvaders(unsigned int width, unsigned int height)
     : State(MENU), Keys(), Width(width), Height(height), Points(0) { }
@@ -21,7 +25,6 @@ SpaceInvaders::SpaceInvaders(unsigned int width, unsigned int height)
 
 void SpaceInvaders::Init()
 {
-
     // Make the Particle Emitter
 	ResourceManager::LoadShader(
         "res/shaders/particleVertex.shader", 
@@ -35,6 +38,8 @@ void SpaceInvaders::Init()
 		500
 	);
 
+    //Initialize Sound Engine
+    SoundEngine->play2D("res/audio/breakout.mp3", true);
 
     // Load the fonts for the Text Renderer
     Text = std::make_shared<TextRenderer>(this->Width, this->Height);
@@ -61,13 +66,11 @@ void SpaceInvaders::Init()
     ResourceManager::LoadResources("res/textures");
 
     this->Levels.emplace_back(Level("res/levels/levelLayout.txt", this->Width, this->Height / 2, Bullets));
-
-    // Configure game objects
-    glm::vec2 playerPos = 
-        glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, // Middle of the Screen
-        this->Height + PLAYER_OFFSET.x - PLAYER_SIZE.y);
         
-    player = std::make_shared<Player>(Bullets, ResourceManager::GetTexture("player.png"), playerPos, PLAYER_SIZE);
+    // Start Player
+    playerStartPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, // Middle of the Screen
+        this->Height + PLAYER_OFFSET.x - PLAYER_SIZE.y);
+    player = std::make_shared<Player>(SoundEngine, Bullets, ResourceManager::GetTexture("player.png"), playerStartPos, PLAYER_SIZE);
 }
 
 void SpaceInvaders::Update(float deltaTime)
@@ -85,10 +88,12 @@ void SpaceInvaders::Update(float deltaTime)
 
         //Do Collisions
         if (playerHit) {
+            player->Reset(playerStartPos);
             spawnDelay += deltaTime;
             if (spawnDelay >= 1.0f) {
                 playerHit = false;
                 spawnDelay = 0.0f;
+                player->playerHit = false;
             }
         }
         else {
@@ -202,6 +207,7 @@ void SpaceInvaders::DoCollisions()
                 player->canShoot = true;
                 enemy.Destroyed = true; 
                 this->Points += 100;
+                SoundEngine->play2D("res/audio/invaderkilled.wav", false);
                 break; // Exit the loop after destroying one enemy
             }
         }

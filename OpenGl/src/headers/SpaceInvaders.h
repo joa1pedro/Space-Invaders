@@ -42,4 +42,6 @@ public:
     bool playerHit = false;
     unsigned int Points;
     unsigned int Lives = 3;
+private:
+    glm::vec2 playerStartPos;
 };

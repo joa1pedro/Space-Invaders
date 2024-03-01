@@ -163,4 +163,16 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\audio\breakout.mp3" />
+    <Media Include="res\audio\explosion.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\audio\invaderkilled.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\audio\shoot.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
