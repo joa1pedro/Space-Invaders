@@ -21,12 +21,14 @@ void BulletSystem::Update(float deltaTime, unsigned int window_width, unsigned i
 void BulletSystem::Draw(){
 
 	// Drawing Player Bullet
-	for (Bullet* go : PlayerBullets) {
-		if (!go->Destroyed) {
-			go->Draw(*Renderer);
+	for (auto it = PlayerBullets.begin(); it != PlayerBullets.end();) {
+		if ((*it)->Destroyed) {
+			delete* it;
+			it = PlayerBullets.erase(it);
 		}
 		else {
-			PlayerBullets.pop_back();
+			(*it)->Draw(*Renderer);
+			++it;
 		}
 	}
 

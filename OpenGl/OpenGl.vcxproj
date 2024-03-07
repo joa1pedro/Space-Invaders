@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\headers\ParticleEmitter.h" />
+    <ClCompile Include="src\Obstacle.cpp" />
     <ClCompile Include="src\ParticleEmitter.cpp" />
     <ClCompile Include="src\BulletSystem.cpp" />
     <ClCompile Include="src\Utils\GridLayoutHelper.cpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\BulletSystem.h" />
+    <ClInclude Include="src\headers\Obstacle.h" />
     <ClInclude Include="src\Utils\headers\GridLayoutHelper.h" />
     <ClInclude Include="src\headers\Player.h" />
     <ClInclude Include="src\headers\Enemy.h" />
@@ -190,6 +192,7 @@
     <Image Include="res\textures\player.png" />
     <Image Include="res\textures\red.png" />
     <Image Include="res\textures\red2.png" />
+    <Image Include="res\textures\square.png" />
     <Image Include="res\textures\yellow.png" />
     <Image Include="res\textures\yellow2.png" />
   </ItemGroup>

@@ -57,7 +57,7 @@ void Level::Update(float deltaTime, unsigned int window_width, unsigned int wind
     for (Enemy& enemy : this->Enemies) {
         if(enemy.Move(deltaTime, window_width, window_height)){
             // Some enemy has hit the corner. 
-            // Setting the flag
+
             invert = true;
         }        
     }

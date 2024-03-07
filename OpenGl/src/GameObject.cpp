@@ -12,6 +12,12 @@ GameObject::GameObject()
       SpritePath(""), Sprite(), 
       IsSolid(false), Destroyed(false) { }
 
+GameObject::GameObject(glm::vec2 pos, glm::vec2 size, std::string spritePath, Texture2D sprite, glm::vec3 color)
+    : UniqueId(-1), Name("name"),
+    Position(pos), Size(size), Velocity(0.0f), Color(color), Rotation(0.0f),
+    SpritePath(spritePath), Sprite(sprite),
+    IsSolid(false), Destroyed(false) { }
+
 GameObject::GameObject(unsigned int uniqueId, std::string name, glm::vec2 pos, glm::vec2 size, std::string spritePath, Texture2D sprite, glm::vec3 color, glm::vec2 velocity)
     : UniqueId(uniqueId), Name(name), 
       Position(pos), Size(size), Velocity(velocity), Color(color), Rotation(0.0f), 

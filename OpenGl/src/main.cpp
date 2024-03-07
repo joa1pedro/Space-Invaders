@@ -19,6 +19,7 @@ const unsigned int SCREEN_HEIGHT = 600;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void mouse_callback(GLFWwindow* window, int key, int action, int mode);
 
 SpaceInvaders Game(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -45,6 +46,7 @@ int main(void){
 
     // Set keys callback for Up and Down
     glfwSetKeyCallback(window, key_callback);
+    glfwSetMouseButtonCallback(window, mouse_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -84,6 +86,16 @@ int main(void){
 
     glfwTerminate();
     return 0;
+}
+
+void mouse_callback(GLFWwindow* window, int key, int action, int mode){
+    if (key >= 0 && key < 1024)
+    {
+        if (action == GLFW_PRESS)
+            Game.Mouse[key] = true;
+        else if (action == GLFW_RELEASE)
+            Game.Mouse[key] = false;
+    }
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode){

@@ -4,6 +4,7 @@
 #include "BulletSystem.h"
 #include "ParticleEmitter.h"
 #include "Bullet.h"
+#include "Obstacle.h"
 #include "TextRenderer.h"
 #include "sstream"
 #include <iostream>
@@ -15,6 +16,7 @@ std::shared_ptr<BulletSystem> Bullets;
 std::shared_ptr<Player> player;
 std::shared_ptr<ParticleEmitter> Particles;
 std::shared_ptr<TextRenderer> Text;
+std::shared_ptr<Obstacle> obstacles[4];
 ISoundEngine* SoundEngine = createIrrKlangDevice();
 
 using namespace irrklang;
@@ -71,6 +73,10 @@ void SpaceInvaders::Init()
     playerStartPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, // Middle of the Screen
         this->Height + PLAYER_OFFSET.x - PLAYER_SIZE.y);
     player = std::make_shared<Player>(SoundEngine, Bullets, ResourceManager::GetTexture("player.png"), playerStartPos, PLAYER_SIZE);
+
+    for (int i = 0; i < 4; i++) {
+        obstacles[i] = std::make_shared<Obstacle>(glm::vec2{ 60+(200*i), 400 });
+    }
 }
 
 void SpaceInvaders::Update(float deltaTime)
@@ -79,7 +85,7 @@ void SpaceInvaders::Update(float deltaTime)
         // Update Particles
         //Particles->Update(deltaTime, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
 
-        //Update Particle Bullets
+        //Update Bullets
         Bullets->Update(deltaTime, this->Width, this->Height);
 
         //Update objects in Level
@@ -118,7 +124,7 @@ void SpaceInvaders::ProcessInput(float deltaTime)
             if (player->Position.x <= this->Width - player->Size.x)
                 player->Position.x += velocity;
         }
-        if (this->Keys[GLFW_KEY_SPACE])
+        if (this->Keys[GLFW_KEY_SPACE] || this->Mouse[GLFW_MOUSE_BUTTON_LEFT])
             player->Shoot();
     }
     if (this->State == MENU)
@@ -164,6 +170,11 @@ void SpaceInvaders::Render()
         // Draw Bullets
         Bullets->Draw();
 
+        // Draw Obstacles
+        for (auto obstacle : obstacles) {
+            obstacle->Draw(*Renderer);
+        }
+
         // Draw Texts
         std::stringstream ss;
         ss << this->Points;
@@ -171,9 +182,18 @@ void SpaceInvaders::Render()
         ss.str("");
         ss << this->Lives;
         Text->RenderText("Lives:" + ss.str(), this->Width-150.0f, 30.0f, 1.0f);
+        ss.str("");
+
+        //Debug mode
+        ss << Bullets->PlayerBullets.size();
+        Text->RenderText("Player Bullets:" + ss.str(), 10.0f, 60.0f, 1.0f);
+        ss.str("");
+        ss << Bullets->EnemyBullets.size();
+        Text->RenderText("Enemy Bullets:" + ss.str(), 10.0f, 90.0f, 1.0f);
     }
 }
 
+// Collisions between Bullets and the Player
 bool CheckCollision(Bullet& one, Player& two) // AABB - AABB collision
 {
     // collision x-axis?
@@ -186,7 +206,21 @@ bool CheckCollision(Bullet& one, Player& two) // AABB - AABB collision
     return collisionX && collisionY;
 }
 
+// Collisions between Bullets and Enemies
 bool CheckCollision(Bullet& one, Enemy& two) // AABB - AABB collision
+{
+    // X Axis Collision only
+    bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
+        two.Position.x + two.Size.x >= one.Position.x;
+    // Y Axis Collision only
+    bool collisionY = one.Position.y + one.Size.y >= two.Position.y &&
+        two.Position.y + two.Size.y >= one.Position.y;
+    // 2 Axis Collision, real Collision
+    return collisionX && collisionY;
+}
+
+// Collisions between Bullets and Obstacles Blocks
+bool CheckCollision(Bullet& one, GameObject& two) // AABB - AABB collision
 {
     // X Axis Collision only
     bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
@@ -200,23 +234,82 @@ bool CheckCollision(Bullet& one, Enemy& two) // AABB - AABB collision
 
 void SpaceInvaders::DoCollisions()
 {
+    // Check Collisions for the player bullets
     if (Bullets && !Bullets->PlayerBullets.empty()) {
+        // Obstacles collision agains player bullets
+        for (auto &obstacle : obstacles) {
+            for (auto &block : obstacle->blocks)
+                if (!block.Destroyed && CheckCollision(*Bullets->PlayerBullets[0], block)) {
+                    // Remove the player bullet from the stack
+                    Bullets->PlayerBullets.pop_back();
+
+                    //Reset player shooting cooldown
+                    player->canShoot = true;
+
+                    //Set the obstacle to be destroyed
+                    block.Destroyed = true;
+
+                    // Exit the loop after destroying one obstacle
+                    return;
+                }
+        }
+
+        // Enemy collision against player bullets
         for (Enemy& enemy : this->Levels[this->CurrentLevel].Enemies) {
             if (!enemy.Destroyed && CheckCollision(*Bullets->PlayerBullets[0], enemy)) {
+                // A Bullet has hit an enemy
+
+                // Remove the player bullet from the stack
                 Bullets->PlayerBullets.pop_back();
+                
+                //Reset player shooting cooldown
                 player->canShoot = true;
+
+                // Set the enemy to Destroyed, it is going to be removed from the stack on the next draw call
                 enemy.Destroyed = true; 
-                this->Points += 100;
+
+                //Player the audio for destroying an enemy
                 SoundEngine->play2D("res/audio/invaderkilled.wav", false);
-                break; // Exit the loop after destroying one enemy
+
+                // Give player the points for that enemy
+                this->Points += enemy.PointsForDestruction;
+
+                // Exit the loop after destroying one enemy
+                break; 
             }
         }
     }
+
+    // Check collisions for the Enemy bullets
     for (Bullet* bullet : Bullets->EnemyBullets) {
+
+        // Collision against player 
         if (CheckCollision(*bullet, *player)) {
+            // A bullet has collided with the player
+
+            // Set the bullet to destroyed, it is going to be removed from the stck on the next draw call
             bullet->Destroyed = true;
+
+            // Set a cooldown for the player Hit
             playerHit = true;
+
+            // Decrease player lifepoints
             this->Lives -= 1;
+        }
+        
+        //Collision against obstacles
+        for (auto &obstacle : obstacles) {
+            for(auto &block : obstacle->blocks)
+            if (!block.Destroyed && CheckCollision(*bullet, block)) {
+                // Set the bullet to destroyed, it is going to be removed from the stck on the next draw call
+                bullet->Destroyed = true;
+
+                //Set the obstacle to be destroyed
+                block.Destroyed = true;
+
+                // Exit the loop after destroying one obstacle
+                break;
+            }
         }
     }
 }

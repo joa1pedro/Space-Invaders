@@ -24,6 +24,7 @@ class SpaceInvaders
 public:
     GameState State;
     bool Keys[1024];
+    bool Mouse[1024];
     unsigned int Width, Height;
 
     std::vector<Level> Levels;

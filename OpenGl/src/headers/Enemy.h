@@ -28,6 +28,8 @@ public:
 	void Shoot();
 	bool canShoot = true;
 	glm::vec2 bulletVelocity = { 0.0f, 250.0f };
+	
+	unsigned int PointsForDestruction = 100;
 
 	bool invertedTick = false;
 	float updateRateTime = 0.0f;

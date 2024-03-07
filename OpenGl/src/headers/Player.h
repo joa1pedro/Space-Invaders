@@ -23,7 +23,7 @@ public:
 	bool canShoot = true;
 	bool playerHit = false;
 private:
-	glm::vec2 bulletVelocity = { 0.0f, -800.0f };
+	glm::vec2 bulletVelocity = { 0.0f, -400.0f };
 	Bullet* currentBullet = nullptr;
 	int currentBulletType = 1;
 };
