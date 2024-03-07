@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Block.cpp" />
     <ClCompile Include="src\headers\ParticleEmitter.h" />
     <ClCompile Include="src\Obstacle.cpp" />
     <ClCompile Include="src\ParticleEmitter.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\Utils\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\headers\Block.h" />
     <ClInclude Include="src\headers\BulletSystem.h" />
     <ClInclude Include="src\headers\Obstacle.h" />
     <ClInclude Include="src\Utils\headers\GridLayoutHelper.h" />

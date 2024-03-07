@@ -83,7 +83,7 @@ void SpaceInvaders::Update(float deltaTime)
 {
     if (this->State == ACTIVE) {
         // Update Particles
-        //Particles->Update(deltaTime, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+        //Particles->Update(deltaTime, *parts, 2, );
 
         //Update Bullets
         Bullets->Update(deltaTime, this->Width, this->Height);
@@ -220,7 +220,7 @@ bool CheckCollision(Bullet& one, Enemy& two) // AABB - AABB collision
 }
 
 // Collisions between Bullets and Obstacles Blocks
-bool CheckCollision(Bullet& one, GameObject& two) // AABB - AABB collision
+bool CheckCollision(Bullet& one, Block& two) // AABB - AABB collision
 {
     // X Axis Collision only
     bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
@@ -247,7 +247,12 @@ void SpaceInvaders::DoCollisions()
                     player->canShoot = true;
 
                     //Set the obstacle to be destroyed
-                    block.Destroyed = true;
+                    if (block.ToBeDestroyed()) {
+                        block.Destroyed = true;
+                    }
+                    else {
+                        block.Damage();
+                    }
 
                     // Exit the loop after destroying one obstacle
                     return;
@@ -305,7 +310,12 @@ void SpaceInvaders::DoCollisions()
                 bullet->Destroyed = true;
 
                 //Set the obstacle to be destroyed
-                block.Destroyed = true;
+                if (block.ToBeDestroyed()) {
+                    block.Destroyed = true;
+                }
+                else {
+                    block.Damage();
+                }
 
                 // Exit the loop after destroying one obstacle
                 break;
